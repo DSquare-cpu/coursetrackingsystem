@@ -1,8 +1,14 @@
 package com.example.coursetrackingsystem.ui;
 
+import com.example.coursetrackingsystem.repositories.CourseRepository;
+import com.example.coursetrackingsystem.repositories.SemesterRepository;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -46,6 +52,22 @@ public class MainViewController {
 
     @FXML
     private void handleSemesters(ActionEvent event) throws IOException {
+
+        CourseRepository courseRepository = new CourseRepository();
+        SemesterRepository semesterRepository = new SemesterRepository();
+
+        // Creating controller and inject dependencies
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SemesterView.fxml"));
+        System.out.println("Loaded");
+        Parent root = loader.load();
+        SemesterViewController controller = loader.getController();
+        controller.setRepositories(courseRepository, semesterRepository);
+        controller.init();
+
+        // Switching scene
+        Stage stage = (Stage) manageSemestersButton.getScene().getWindow();
+        stage.setScene(new Scene(root));
+
         System.out.println("Manage Semester clicked");
     }
 
