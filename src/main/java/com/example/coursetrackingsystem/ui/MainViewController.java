@@ -1,9 +1,6 @@
 package com.example.coursetrackingsystem.ui;
 
-import com.example.coursetrackingsystem.repositories.AssessmentsRepository;
-import com.example.coursetrackingsystem.repositories.CourseRepository;
-import com.example.coursetrackingsystem.repositories.LecturerRepository;
-import com.example.coursetrackingsystem.repositories.SemesterRepository;
+import com.example.coursetrackingsystem.repositories.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -102,6 +99,25 @@ public class MainViewController {
 
     @FXML
     private void handleMarksheets(ActionEvent event) throws IOException {
+
+        // Create repository instances
+        CourseRepository courseRepository = new CourseRepository();
+        LecturerRepository lecturerRepository = new LecturerRepository();
+        SemesterRepository semesterRepository = new SemesterRepository();
+        MarkSheetRepository markSheetRepository = new MarkSheetRepository();
+
+        // Create the controller and inject dependencies
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MarkSheetView.fxml"));
+        System.out.println("Loaded");
+        Parent root = loader.load();
+        MarkSheetViewController controller = loader.getController();
+        controller.setRepositories(courseRepository, lecturerRepository, semesterRepository, markSheetRepository);
+        controller.init();
+
+        // Switch scene
+        Stage stage = (Stage) manageMarksheetsButton.getScene().getWindow();
+        stage.setScene(new Scene(root));
+
         System.out.println("Manage Marksheets clicked");
     }
 
