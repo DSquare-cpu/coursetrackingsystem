@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" prefHeight="500.0" prefWidth="800.0" spacing="20" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.coursetrackingsystem.ui.LectureViewController">
+    <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Lecturers" />
+
+    <TableView fx:id="lecturerTable" prefHeight="200">
+        <columns>
+            <TableColumn fx:id="lecturerIdColumn" prefWidth="100.0" text="Lecturer ID" />
+            <TableColumn fx:id="lecturerNameColumn" prefWidth="300.0" text="Name" />
+            <TableColumn fx:id="lecturerEmailColumn" prefWidth="400.0" text="Email" />
+        </columns>
+    </TableView>
+
+    <HBox spacing="10" alignment="CENTER">
+        <VBox alignment="CENTER">
+            <GridPane prefHeight="170.0" prefWidth="450.0" hgap="10" vgap="10" alignment="CENTER">
+                <Label text="Courses:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <TextArea fx:id="coursesDescField" prefWidth="250" prefHeight="100" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.rowSpan="1" />
+
+                <Label text="Semesters:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <TextArea fx:id="semestersDescField" prefWidth="250" prefHeight="100" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="1" />
+            </GridPane>
+        </VBox>
+
+        <VBox alignment="CENTER">
+            <Label style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Add Lecturer" />
+
+            <GridPane prefHeight="170.0" prefWidth="450.0" hgap="10" vgap="10" alignment="CENTER">
+                <Label text="Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <TextField fx:id="lecturerNameTextField" prefWidth="200" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <TextField fx:id="lecturerEmailTextField" prefWidth="200" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                <Button onAction="#handleSaveLecturer" text="Add Lecturer" GridPane.columnIndex="1" GridPane.rowIndex="4" alignment="CENTER" />
+            </GridPane>
+        </VBox>
+
+    </HBox>
+
+    <Button onAction="#handleBackToMain" text="Back to Main" />
+</VBox>

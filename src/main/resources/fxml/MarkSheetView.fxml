@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" prefHeight="500.0" prefWidth="1200.0" spacing="20" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.coursetrackingsystem.ui.MarkSheetViewController">
+    <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="MarkSheet Management" />
+
+    <HBox alignment="CENTER" spacing="10">
+        <Label text="Select Semester:" />
+        <ComboBox fx:id="semesterComboBox" onAction="#handleSemesterChange" prefHeight="26.0" prefWidth="181.0" />
+    </HBox>
+
+    <TableView fx:id="markSheetTable" prefHeight="183.0" prefWidth="1000.0">
+        <columns>
+            <TableColumn fx:id="courseNameColumn" prefWidth="250.0" text="Course" />
+            <TableColumn fx:id="lecturerColumn" prefWidth="160.0" text="Lecturer" />
+            <TableColumn fx:id="dateColumn" prefWidth="150.0" text="Completion Date" />
+            <TableColumn fx:id="submissionStatusColumn" prefWidth="150.0" text="Status" />
+            <TableColumn fx:id="totalStudentsColumn" prefWidth="100.0" text="Total Students" />
+            <TableColumn fx:id="studentsMarkedColumn" prefWidth="100.0" text="Students Marked" />
+            <TableColumn fx:id="averageScoreColumn" prefWidth="100.0" text="Average Score" />
+            <TableColumn fx:id="highestScoreColumn" prefWidth="100.0" text="Highest Score" />
+            <TableColumn fx:id="lowestScoreColumn" prefWidth="100.0" text="Lowest Score" />
+        </columns>
+    </TableView>
+
+    <VBox alignment="CENTER" spacing="20">
+        <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Add / Edit MarkSheet" />
+
+        <GridPane alignment="CENTER" hgap="20" vgap="10">
+            <Label text="Course:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <ComboBox fx:id="courseComboBox" prefHeight="26.0" prefWidth="316.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+            <Label text="Lecturer:" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+            <ComboBox fx:id="lecturerComboBox" prefHeight="26.0" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+
+            <Label text="Est. Completion Date:" GridPane.columnIndex="4" GridPane.rowIndex="0" />
+            <DatePicker fx:id="completionDatePicker" prefHeight="26.0" prefWidth="120.0" GridPane.columnIndex="5" GridPane.rowIndex="0" />
+
+            <Label text="Status:" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+            <ComboBox fx:id="submissionStatusComboBox" prefHeight="26.0" prefWidth="162.0" GridPane.columnIndex="7" GridPane.rowIndex="0" />
+         <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+         </rowConstraints>
+        </GridPane>
+
+        <GridPane alignment="CENTER" hgap="20" vgap="10">
+            <Label text="Total Students:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <TextField fx:id="totalStudentsTextField" prefHeight="26.0" prefWidth="80.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+            <Label text="Marked Students:" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+            <TextField fx:id="studentsMarkedTextField" prefHeight="26.0" prefWidth="80.0" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+
+            <Label text="Average Score:" GridPane.columnIndex="4" GridPane.rowIndex="0" />
+            <TextField fx:id="averageScoreTextField" prefHeight="26.0" prefWidth="80.0" GridPane.columnIndex="5" GridPane.rowIndex="0" />
+
+            <Label text="Highest Score:" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+            <TextField fx:id="highestScoreTextField" prefHeight="26.0" prefWidth="80.0" GridPane.columnIndex="7" GridPane.rowIndex="0" />
+
+            <Label text="Lowest Score:" GridPane.columnIndex="8" GridPane.rowIndex="0" />
+            <TextField fx:id="lowestScoreTextField" prefHeight="26.0" prefWidth="80.0" GridPane.columnIndex="9" GridPane.rowIndex="0" />
+         <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+         </rowConstraints>
+        </GridPane>
+
+        <GridPane alignment="CENTER" hgap="20" vgap="10">
+            <Button onAction="#dropMarkSheet" prefWidth="120" text="Drop" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <Button onAction="#handleSaveMarkSheet" prefWidth="120" text="Update" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+            <Button onAction="#clearFields" prefWidth="120" text="Clear" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+            <Button onAction="#handleBackToMain" prefWidth="120" text="Back to Main" GridPane.columnIndex="5" GridPane.rowIndex="0" />
+         <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+         </rowConstraints>
+        </GridPane>
+    </VBox>
+</VBox>

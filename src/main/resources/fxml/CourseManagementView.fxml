@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" prefHeight="600.0" prefWidth="1000.0" spacing="20" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.coursetrackingsystem.ui.CourseManagementController">
+    <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Course Management" />
+
+    <HBox spacing="10">
+        <Label text="Select Semester:" />
+        <ComboBox fx:id="semesterComboBox" onAction="#handleSemesterChange" />
+    </HBox>
+
+    <TableView fx:id="courseTable" prefHeight="200">
+        <columns>
+            <TableColumn fx:id="courseIdColumn" prefWidth="100.0" text="Course ID" />
+            <TableColumn fx:id="courseNameColumn" prefWidth="400.0" text="Course Name" />
+            <TableColumn fx:id="startDateColumn" prefWidth="200.0" text="Start Date" />
+            <TableColumn fx:id="lecturerColumn" prefWidth="300.0" text="Lecturer" />
+        </columns>
+    </TableView>
+
+    <HBox spacing="10" alignment="CENTER">
+        <VBox alignment="CENTER">
+            <Label style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Add New Course" />
+
+            <GridPane prefHeight="170.0" prefWidth="400.0" hgap="10" vgap="10" alignment="CENTER">
+                <!--        <ColumnConstraints halignment="RIGHT" />-->
+                <!--        <ColumnConstraints halignment="LEFT" />-->
+
+                <Label text="Course Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <TextField fx:id="courseNameField" prefWidth="200" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                <Label text="Lecturer:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <ComboBox fx:id="lecturerComboBox" prefWidth="200" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                <Label text="Start Date:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <DatePicker fx:id="startDateField" prefWidth="200" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                <Button onAction="#handleSaveCourse" text="Save Course" GridPane.columnIndex="1" GridPane.rowIndex="4" alignment="CENTER" />
+            </GridPane>
+        </VBox>
+
+        <!-- Drop a Course Section -->
+        <VBox alignment="CENTER">
+            <Label style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Drop a Course" />
+
+            <GridPane prefHeight="170.0" prefWidth="400.0" hgap="10" vgap="10" alignment="CENTER">
+                <Label text="Select Course:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <ComboBox fx:id="courseDropSelection" prefWidth="200" GridPane.columnIndex="1" GridPane.rowIndex="0" onAction="#updateCourseDesc"/>
+
+                <Label text="Reason:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <TextArea fx:id="courseDetailArea" prefWidth="200" prefHeight="100" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="4" />
+
+                <Button onAction="#handleDropCourse" text="Drop the Course" GridPane.columnIndex="1" GridPane.rowIndex="5" alignment="CENTER" />
+            </GridPane>
+        </VBox>
+    </HBox>
+
+    <Button onAction="#handleBackToMain" text="Back to Main" />
+</VBox>
