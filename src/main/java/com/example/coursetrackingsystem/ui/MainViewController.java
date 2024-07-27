@@ -1,5 +1,6 @@
 package com.example.coursetrackingsystem.ui;
 
+import com.example.coursetrackingsystem.repositories.AssessmentsRepository;
 import com.example.coursetrackingsystem.repositories.CourseRepository;
 import com.example.coursetrackingsystem.repositories.LecturerRepository;
 import com.example.coursetrackingsystem.repositories.SemesterRepository;
@@ -77,8 +78,27 @@ public class MainViewController {
 
     @FXML
     private void handleAssessments(ActionEvent event) throws IOException {
+
+        // Create repository instances
+        CourseRepository courseRepository = new CourseRepository();
+        LecturerRepository lecturerRepository = new LecturerRepository();
+        SemesterRepository semesterRepository = new SemesterRepository();
+        AssessmentsRepository assessmentsRepository = new AssessmentsRepository();
+
+        // Create the controller and inject dependencies
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AssessmentsView.fxml"));
+        Parent root = loader.load();
+        AssessmentsViewController controller = loader.getController();
+        controller.setRepositories(courseRepository, lecturerRepository, semesterRepository, assessmentsRepository);
+        controller.init();
+
+        // Switch scene
+        Stage stage = (Stage) manageAssignmentsButton.getScene().getWindow();
+        stage.setScene(new Scene(root));
+
         System.out.println("Manage Assessments clicked");
     }
+
 
     @FXML
     private void handleMarksheets(ActionEvent event) throws IOException {
