@@ -1,6 +1,7 @@
 package com.example.coursetrackingsystem.ui;
 
 import com.example.coursetrackingsystem.repositories.CourseRepository;
+import com.example.coursetrackingsystem.repositories.LecturerRepository;
 import com.example.coursetrackingsystem.repositories.SemesterRepository;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -37,6 +38,23 @@ public class MainViewController {
 
     @FXML
     private void handleLecturers(ActionEvent event) throws IOException {
+
+        // Create repository instances
+        CourseRepository courseRepository = new CourseRepository();
+        LecturerRepository lecturerRepository = new LecturerRepository();
+        SemesterRepository semesterRepository = new SemesterRepository();
+
+        // Create the controller and inject dependencies
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/LecturersView.fxml"));
+        Parent root = loader.load();
+        LectureViewController controller = loader.getController();
+        controller.setRepositories(courseRepository, lecturerRepository, semesterRepository);
+        controller.init();
+
+        // Switch scene
+        Stage stage = (Stage) manageLecturersButton.getScene().getWindow();
+        stage.setScene(new Scene(root));
+
         System.out.println("Manage Lecturers clicked");
     }
 
