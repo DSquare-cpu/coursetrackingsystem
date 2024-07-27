@@ -182,4 +182,23 @@ public class CourseRepository {
             e.printStackTrace();
         }
     }
+
+    public boolean isCourseReferenced(Long courseId) {
+        String query = "SELECT COUNT(*) FROM marksheets WHERE course_id = ?";
+
+        try (Connection connection = DatabaseConfig.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setLong(1, courseId);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                return resultSet.getInt(1) > 0;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
 }

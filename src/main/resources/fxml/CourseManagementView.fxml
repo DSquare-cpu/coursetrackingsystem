@@ -49,7 +49,7 @@
                 <Label text="Select Course:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
                 <ComboBox fx:id="courseDropSelection" prefWidth="200" GridPane.columnIndex="1" GridPane.rowIndex="0" onAction="#updateCourseDesc"/>
 
-                <Label text="Reason:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <Label text="Info:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
                 <TextArea fx:id="courseDetailArea" prefWidth="200" prefHeight="100" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="4" />
 
                 <Button onAction="#handleDropCourse" text="Drop the Course" GridPane.columnIndex="1" GridPane.rowIndex="5" alignment="CENTER" />

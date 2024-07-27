@@ -187,35 +187,46 @@ public class CourseManagementController {
         }
     }
 
+
     @FXML
-    public void handleDropCourse() throws IOException{
+    public void handleDropCourse() throws IOException {
         try {
             // Get values from text fields
             String courseName = courseDropSelection.getValue();
             Semester semester = semesterRepository.findByName(semesterComboBox.getValue());
             Course course = courseRepository.findByName(semester, courseName);
 
-            // Save course to the database
-            courseRepository.drop(semester, course);
+            // Check if the course is referenced in the marksheets table
+            if (courseRepository.isCourseReferenced(course.getCourseId())) {
+                // Show alert that the course cannot be dropped
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Course Cannot Be Dropped");
+                alert.setHeaderText(null);
+                alert.setContentText("The course cannot be dropped because it is referenced in marksheets. Please delete the related marksheets first.");
+                alert.showAndWait();
+            } else {
+                // Save course to the database
+                courseRepository.drop(semester, course);
 
-            // Show success message
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Course Dropped");
-            alert.setHeaderText(null);
-            alert.setContentText("Course has been dropped successfully.");
-            alert.showAndWait();
+                // Show success message
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Course Dropped");
+                alert.setHeaderText(null);
+                alert.setContentText("Course has been dropped successfully.");
+                alert.showAndWait();
 
-            // Clear text fields after saving
-            courseDetailArea.clear();
-            courseDropSelection.getSelectionModel().clearSelection();
-            updateWidgets(semester.getSemesterName());
+                // Clear text fields after saving
+                courseDetailArea.clear();
+                courseDropSelection.getSelectionModel().clearSelection();
+                updateWidgets(semester.getSemesterName());
+            }
 
         } catch (Exception e) {
             // Show error message in case of an exception
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("An error occurred while dropping the course."+ e.getMessage());
+            alert.setContentText("An error occurred while dropping the course: " + e.getMessage());
             alert.showAndWait();
         }
     }
