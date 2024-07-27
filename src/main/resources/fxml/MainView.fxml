@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<VBox alignment="CENTER" prefHeight="364.0" prefWidth="578.0" spacing="20" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.coursetrackingsystem.ui.MainViewController">
+
+    <Text style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Course Tracking System" wrappingWidth="287.1600036621094" />
+    <VBox alignment="CENTER" prefHeight="200">
+        <GridPane alignment="CENTER" hgap="20" vgap="20">
+            <Button fx:id="manageCoursesButton" onAction="#handleCourses" prefHeight="26.0" prefWidth="155.0" text="Courses" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <Button fx:id="manageLecturersButton" onAction="#handleLecturers" prefHeight="26.0" prefWidth="155.0" text="Lecturers" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+            <Button fx:id="manageAssignmentsButton" onAction="#handleAssessments" prefHeight="26.0" prefWidth="155.0" text="Assessments" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <Button fx:id="manageMarksheetsButton" onAction="#handleMarksheets" prefHeight="26.0" prefWidth="155.0" text="Marksheets" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        </GridPane>
+        <HBox prefHeight="20"></HBox>
+        <GridPane alignment="CENTER" hgap="20" vgap="20">
+            <Button fx:id="manageSemestersButton"  onAction="#handleSemesters" prefHeight="26.0" prefWidth="200.0" text="Semester Management" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        </GridPane>
+    </VBox>
+    <Text style="-fx-font-weight: bold;" text="University of Guyana" />
+</VBox>
