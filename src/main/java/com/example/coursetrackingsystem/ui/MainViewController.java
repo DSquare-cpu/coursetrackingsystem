@@ -33,6 +33,23 @@ public class MainViewController {
 
     @FXML
     private void handleCourses(ActionEvent event) throws IOException {
+
+        // Create repository instances
+        CourseRepository courseRepository = new CourseRepository();
+        LecturerRepository lecturerRepository = new LecturerRepository();
+        SemesterRepository semesterRepository = new SemesterRepository();
+
+        // Create the controller and inject dependencies
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CourseManagementView.fxml"));
+        Parent root = loader.load();
+        CourseManagementController controller = loader.getController();
+        controller.setRepositories(courseRepository, lecturerRepository, semesterRepository);
+        controller.init();
+
+        // Switch scene
+        Stage stage = (Stage) manageCoursesButton.getScene().getWindow();
+        stage.setScene(new Scene(root));
+
         System.out.println("Manage Courses clicked");
     }
 
